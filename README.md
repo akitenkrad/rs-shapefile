@@ -66,7 +66,3 @@ rs-shapefile = { version = "0.1", features = ["geojson"] }
 ## Minimum Supported Rust Version
 
 **1.75.0**
-
-## License
-
-MIT
