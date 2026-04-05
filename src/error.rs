@@ -55,4 +55,9 @@ pub enum ShapefileError {
     #[cfg(feature = "geojson")]
     #[error("GeoJSON serialization error: {0}")]
     GeoJsonError(#[from] serde_json::Error),
+
+    /// The GeoJSON input is structurally invalid or contains unsupported types.
+    #[cfg(feature = "geojson")]
+    #[error("invalid GeoJSON: {reason}")]
+    InvalidGeoJson { reason: String },
 }

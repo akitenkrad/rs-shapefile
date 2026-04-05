@@ -1,7 +1,10 @@
-//! A pure-Rust Shapefile reader for GIS data analysis.
+//! A pure-Rust library for reading ESRI Shapefiles and GeoJSON.
 //!
-//! Reads `.shp`, `.shx`, `.dbf`, `.prj`, and `.cpg` files with streaming support,
-//! spatial/attribute filtering, and optional GeoJSON export.
+//! - **Shapefile**: reads `.shp`, `.shx`, `.dbf`, `.prj`, and `.cpg` via [`ShapefileReader`]
+//! - **GeoJSON**: reads RFC 7946 GeoJSON via [`GeoJsonReader`] (requires `geojson` feature)
+//!
+//! Both readers share the same model types ([`Geometry`], [`ShapeRecord`], [`BoundingBox`]),
+//! enabling format-agnostic analysis code.
 
 pub mod error;
 pub mod reader;
@@ -25,3 +28,9 @@ pub use crate::models::record::ShapeRecord;
 
 // ShapeType is frequently used, re-export directly
 pub use crate::parsers::shp_parser::ShapeType;
+
+#[cfg(feature = "geojson")]
+pub mod geojson_reader;
+
+#[cfg(feature = "geojson")]
+pub use crate::geojson_reader::GeoJsonReader;

@@ -3,7 +3,7 @@ name    = "rs-shapefile"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.75"
-description = "A pure-Rust Shapefile reader for GIS data analysis"
+description = "A pure-Rust library for reading ESRI Shapefiles and GeoJSON"
 license = "MIT"
 
 [dependencies]
@@ -29,6 +29,11 @@ path = "tests/property/roundtrip.rs"
 [[test]]
 name = "e2e_real_files"
 path = "tests/e2e/real_files.rs"
+
+[[test]]
+name = "geojson_test"
+path = "tests/geojson_test.rs"
+required-features = ["geojson"]
 
 [profile.release]
 opt-level = 3
