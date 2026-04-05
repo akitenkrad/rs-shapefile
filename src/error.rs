@@ -60,4 +60,14 @@ pub enum ShapefileError {
     #[cfg(feature = "geojson")]
     #[error("invalid GeoJSON: {reason}")]
     InvalidGeoJson { reason: String },
+
+    /// Protobuf decoding failed when reading an MVT file (requires `mvt` feature).
+    #[cfg(feature = "mvt")]
+    #[error("MVT decode error: {0}")]
+    MvtDecodeError(#[from] prost::DecodeError),
+
+    /// The MVT data is structurally invalid or contains unsupported values.
+    #[cfg(feature = "mvt")]
+    #[error("invalid MVT: {reason}")]
+    InvalidMvt { reason: String },
 }

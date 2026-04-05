@@ -34,3 +34,9 @@ pub mod geojson_reader;
 
 #[cfg(feature = "geojson")]
 pub use crate::geojson_reader::GeoJsonReader;
+
+#[cfg(feature = "mvt")]
+pub mod mvt_reader;
+
+#[cfg(feature = "mvt")]
+pub use crate::mvt_reader::{LayerFilter, MvtReader, TileCoord};

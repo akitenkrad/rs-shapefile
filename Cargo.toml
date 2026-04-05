@@ -13,14 +13,20 @@ encoding_rs = "0.8"
 # optional features
 serde      = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
+prost      = { version = "0.13", optional = true }
 
 [dev-dependencies]
 proptest    = "1"
 tempfile    = "3"
+prost-build = "0.13"
+
+[build-dependencies]
+prost-build = { version = "0.13", optional = true }
 
 [features]
 default = []
 geojson = ["serde", "serde_json"]
+mvt     = ["prost", "prost-build"]
 
 [[test]]
 name = "property_roundtrip"
@@ -34,6 +40,11 @@ path = "tests/e2e/real_files.rs"
 name = "geojson_test"
 path = "tests/geojson_test.rs"
 required-features = ["geojson"]
+
+[[test]]
+name = "mvt_test"
+path = "tests/mvt_test.rs"
+required-features = ["mvt"]
 
 [profile.release]
 opt-level = 3
