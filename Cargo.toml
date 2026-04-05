@@ -14,6 +14,7 @@ encoding_rs = "0.8"
 serde      = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
 prost      = { version = "0.13", optional = true }
+quick-xml  = { version = "0.37", features = ["encoding"], optional = true }
 
 [dev-dependencies]
 proptest    = "1"
@@ -27,6 +28,7 @@ prost-build = { version = "0.13", optional = true }
 default = []
 geojson = ["serde", "serde_json"]
 mvt     = ["prost", "prost-build"]
+gml     = ["quick-xml"]
 
 [[test]]
 name = "property_roundtrip"
@@ -45,6 +47,11 @@ required-features = ["geojson"]
 name = "mvt_test"
 path = "tests/mvt_test.rs"
 required-features = ["mvt"]
+
+[[test]]
+name = "gml_test"
+path = "tests/gml_test.rs"
+required-features = ["gml"]
 
 [profile.release]
 opt-level = 3

@@ -70,4 +70,14 @@ pub enum ShapefileError {
     #[cfg(feature = "mvt")]
     #[error("invalid MVT: {reason}")]
     InvalidMvt { reason: String },
+
+    /// GML XML parse error (requires `gml` feature).
+    #[cfg(feature = "gml")]
+    #[error("GML XML parse error: {0}")]
+    GmlXmlError(String),
+
+    /// The GML input is structurally invalid or contains unsupported types.
+    #[cfg(feature = "gml")]
+    #[error("invalid GML: {reason}")]
+    InvalidGml { reason: String },
 }

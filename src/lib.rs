@@ -40,3 +40,9 @@ pub mod mvt_reader;
 
 #[cfg(feature = "mvt")]
 pub use crate::mvt_reader::{LayerFilter, MvtReader, TileCoord};
+
+#[cfg(feature = "gml")]
+pub mod gml_reader;
+
+#[cfg(feature = "gml")]
+pub use crate::gml_reader::GmlReader;
